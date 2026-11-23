@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: CompactGM
+## Notes: Compact cascading GM tools for AzerothCore WotLK.
+## Author: Nottah
+## Version: 0.5.0
+## SavedVariables: CompactGMDB
+CompactGM.lua
