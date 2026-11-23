@@ -1,37 +1,54 @@
 # CompactGM
 
-Small cascading GM command menus for WoW 3.3.5a / AzerothCore.
+CompactGM is a lightweight World of Warcraft 3.3.5a client addon for sending common AzerothCore GM, lookup, Playerbot, and server commands through compact cascading menus. It does not change the server or grant permissions; every command still runs through the logged-in character's normal server permissions.
 
 ## Install
 
-Copy the `CompactGM` folder into `Interface/AddOns` in the WotLK client. At the character screen, enable **CompactGM** (and check **Load out of date AddOns** if it is listed as out of date), then log in.
+1. Copy the `CompactGM` folder into the 3.3.5a client's `Interface/AddOns` directory.
+2. At the character screen, enable **CompactGM**. If the client marks it out of date, enable **Load out of date AddOns**.
+3. Log in and use `/cgm` or click the small gear button near the minimap.
 
-## Use
+## Menus
 
-- Click the small gear button by the minimap, or type `/cgm`, for global menus.
-- Right-click a player through the normal unit/player context menu and choose **Compact GM Tools** for actions on that character.
-- Choose **Custom command…** to enter a server command. The addon sends it to the server as a normal GM chat command.
-- Open **World & server → Teleport** for `.recall`, saving the current spot, and your saved teleport shortcuts.
-- Open **Lookup** from the minimap menu to choose a server lookup category and search term; results remain in chat with no result-count cap added by the addon.
-- Ctrl-click an item result from `.lookup item` to add one copy to your inventory.
-- Drag the minimap button to move it.
+The minimap button and `/cgm` open the global menu:
 
-## Teleport list
+- **Lookup** — search items, item sets, quests, creatures, game objects, spells, skills, areas, maps, factions, and events. Results are printed in chat. Ctrl-click a supported item result to add one copy to your inventory; this uses the server's `.additem` command and requires permission.
+- **GM mode** — send `.gm on`, `.gm off`, `.gm fly`, or `.gm visible`.
+- **Playerbots** — start selfbot fishing, check its status, or stop it. These entries require the companion `mod-selfbot-fishing` server module described below.
+- **Dungeon Clear** — check status, enable, pause, skip the current step, disable, or list bosses. These entries require the matching server module and permission.
+- **World & server** — use recall and teleport shortcuts, show server information, list commands, or enter a teleport/other command.
+- **Custom command…** — enter a server command to send as chat text.
 
-- **Save current spot on server…** runs `.teleport add <name>` and remembers the name in this addon's local list.
-- **Saved spots** shows remembered names; selecting one runs `.teleport <name>`.
-- **Add existing server spot to list…** lets you enter a teleport name you already created, then checks it with `.lookup teleport <name>`.
-- **Remove from addon's list** removes only the local shortcut. It does not delete the server teleport.
-- **Return before last teleport** runs `.recall`.
+Right-click a player through the client's normal unit context menu and choose **Compact GM Tools** for targeted actions. The target menu includes player information and common moderation/character actions; server permissions still apply. Some actions ask for a target name or command argument.
 
-The server stores actual teleport coordinates in its world database. CompactGM keeps only the shortcut names in `CompactGMDB`; it cannot automatically import the server's complete teleport table. You can search the server using the menu item **Search server teleport names…** and add existing spots to the local list by name.
+## Selfbot fishing
 
-Playerbots, selfbot fishing, and Dungeon Clear shortcuts are included for the modules in this server checkout. They appear in the global menu; unsupported commands are still governed by your server's GM permissions and module availability.
+The Playerbots menu has **Start selfbot fishing**, **Fishing: status**, and **Fishing: stop**. Starting uses `.sbfish start` from `mod-selfbot-fishing`. That server command checks that the character knows Fishing and has a Fishing Pole in their bags, enables a selfbot if necessary, equips the pole, and activates Playerbots' existing `master fishing` strategy. It does not choose a fishing route or override Playerbots pool/path selection.
 
-The fishing start shortcut uses the updated `mod-selfbot-fishing` command: it enables a selfbot if needed, checks Fishing skill and for a Fishing Pole, equips a pole from your bags, then starts the fishing strategy. Stop turns off the selfbot only when fishing enabled it.
+Stopping removes the fishing and pending bobber-use strategies. If the start command enabled the selfbot, stop turns it off; if the character was already a selfbot, it leaves that bot active. When the session began with another main-hand item, the server module attempts to restore it if the pole is still equipped and the original item remains in inventory.
 
-## Notes
+The local server also uses a small Playerbots source patch to keep the selfbot dismounted during fishing and delay autonomous remounting. That patch is documented and supplied separately in the `mod-selfbot-fishing` repository. CompactGM itself does not apply the patch.
 
-- This is a client addon; it does not change or rebuild the server.
-- Commands are sent as chat text beginning with a dot, matching the AzerothCore command handler.
-- The addon avoids a large settings window and stores the minimap button position plus your local teleport shortcut names.
+## Teleport shortcuts
+
+The **World & server → Teleport** menu provides:
+
+- **Return before last teleport** — sends `.recall`.
+- **Save current spot on server…** — asks for a name, sends `.teleport add <name>`, and adds the name to CompactGM's local shortcut list.
+- **Saved spots** — sends `.teleport <name>` for a remembered shortcut.
+- **Add existing server spot to list…** — asks for an existing teleport name, adds it to the local list, and sends `.lookup teleport <name>` so the server can show matching entries. The name list is local; this lookup does not import the server's teleport table automatically.
+- **Remove from addon's list** — forgets a local shortcut only. It does not delete the server teleport.
+- **Search server teleport names…** — sends `.lookup teleport <search text>`; use the displayed name with **Add existing server spot to list…** if you want a local shortcut.
+
+The server stores teleport locations and coordinates. CompactGM stores only shortcut names in the client's `CompactGMDB` SavedVariables. The local list does not synchronize with the server or other clients.
+
+## Moving the minimap button
+
+Drag the gear button to reposition it around the minimap. Its position is saved by the client.
+
+## Compatibility and scope
+
+- Client addon for WoW 3.3.5a; the `.toc` interface version is `30300`.
+- Commands are sent as dot-prefixed chat text to the server.
+- Features supplied by optional server modules appear in the menu even if the module is unavailable; in that case the server will reject the command.
+- This addon does not modify server source, database tables, or permissions.
