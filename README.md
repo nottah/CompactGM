@@ -52,3 +52,11 @@ Drag the gear button to reposition it around the minimap. Its position is saved 
 - Commands are sent as dot-prefixed chat text to the server.
 - Features supplied by optional server modules appear in the menu even if the module is unavailable; in that case the server will reject the command.
 - This addon does not modify server source, database tables, or permissions.
+
+## Compatibility and provenance
+
+CompactGM is an unofficial client addon for WoW 3.3.5a. Its Playerbots, selfbot fishing, and Dungeon Clear menu entries send commands to optional server modules; Yu'Lon is not required to install or run the addon. These shortcuts were developed for a Yu'Lon-managed AzerothCore WotLK server using `mod-playerbots/azerothcore-wotlk` commit `32fd3472aa74961c91cb9bc942ee3e0a44b36779` and `mod-playerbots/mod-playerbots` commit `ecc4a537a3b43056e412fae63fb4a4271849b472`. The core and Playerbots revisions are compatibility references, not bundled source code.
+
+This project is not affiliated with or endorsed by AzerothCore, the Playerbots project, Yu'Lon, Blizzard Entertainment, or World of Warcraft.
+
+No license has been selected for this addon yet. Choose a license before making the repository public if you want others to have explicit permission to reuse or modify it.
