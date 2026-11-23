@@ -59,4 +59,4 @@ CompactGM is an unofficial client addon for WoW 3.3.5a. Its Playerbots, selfbot 
 
 This project is not affiliated with or endorsed by AzerothCore, the Playerbots project, Yu'Lon, Blizzard Entertainment, or World of Warcraft.
 
-No license has been selected for this addon yet. Choose a license before making the repository public if you want others to have explicit permission to reuse or modify it.
+CompactGM's original addon code is licensed under the MIT License; see [`LICENSE`](LICENSE).
