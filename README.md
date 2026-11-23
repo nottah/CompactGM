@@ -1,10 +1,10 @@
 # CompactGM
 
-CompactGM is a lightweight World of Warcraft 3.3.5a client addon for sending common AzerothCore GM, lookup, Playerbot, and server commands through compact cascading menus. It does not change the server or grant permissions; every command still runs through the logged-in character's normal server permissions.
+CompactGM is a lightweight World of Warcraft: Wrath of the Lich King client addon for sending common AzerothCore GM, lookup, Playerbot, and server commands through compact cascading menus. It does not change the server or grant permissions; every command still runs through the logged-in character's normal server permissions.
 
 ## Install
 
-1. Copy the `CompactGM` folder into the 3.3.5a client's `Interface/AddOns` directory.
+1. Copy the `CompactGM` folder into the client's `Interface/AddOns` directory.
 2. At the character screen, enable **CompactGM**. If the client marks it out of date, enable **Load out of date AddOns**.
 3. Log in and use `/cgm` or click the small gear button near the minimap.
 
@@ -48,14 +48,14 @@ Drag the gear button to reposition it around the minimap. Its position is saved 
 
 ## Compatibility and scope
 
-- Client addon for WoW 3.3.5a; the `.toc` interface version is `30300`.
+- Tested with WoW: Wrath of the Lich King 3.3.5, build `12340` (commonly called 3.3.5a); the `.toc` interface version is `30300`.
 - Commands are sent as dot-prefixed chat text to the server.
 - Features supplied by optional server modules appear in the menu even if the module is unavailable; in that case the server will reject the command.
 - This addon does not modify server source, database tables, or permissions.
 
 ## Compatibility and provenance
 
-CompactGM is an unofficial client addon for WoW 3.3.5a. Its Playerbots, selfbot fishing, and Dungeon Clear menu entries send commands to optional server modules; Yu'Lon is not required to install or run the addon. These shortcuts were developed for a Yu'Lon-managed AzerothCore WotLK server using `mod-playerbots/azerothcore-wotlk` commit `32fd3472aa74961c91cb9bc942ee3e0a44b36779` and `mod-playerbots/mod-playerbots` commit `ecc4a537a3b43056e412fae63fb4a4271849b472`. The core and Playerbots revisions are compatibility references, not bundled source code.
+CompactGM is an unofficial client addon for WoW: Wrath of the Lich King 3.3.5, build `12340`. Its Playerbots, selfbot fishing, and Dungeon Clear menu entries send commands to optional server modules; Yu'Lon is not required to install or run the addon. These shortcuts were developed for a Yu'Lon-managed AzerothCore WotLK server using `mod-playerbots/azerothcore-wotlk` commit `32fd3472aa74961c91cb9bc942ee3e0a44b36779` and `mod-playerbots/mod-playerbots` commit `ecc4a537a3b43056e412fae63fb4a4271849b472`. The core and Playerbots revisions are compatibility references, not bundled source code.
 
 This project is not affiliated with or endorsed by AzerothCore, the Playerbots project, Yu'Lon, Blizzard Entertainment, or World of Warcraft.
 
